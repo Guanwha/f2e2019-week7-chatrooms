@@ -15,3 +15,10 @@ html {
 body {
   height: 100%;
 }
+
+// remove default outline when focus
+button {
+  &:focus {
+    outline-width: 0;
+  }
+}
