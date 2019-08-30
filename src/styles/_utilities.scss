@@ -23,94 +23,52 @@
 // flex utility
 //-- row, left, center
 .flex-rlc {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  text-align: left;
+  @include flex-rlc;
 }
 //-- row, center, bottom
 .flex-rlb {
-  display: flex;
-  flex-direction: row;
-  justify-content: left;
-  align-items: flex-end;
-  text-align: center;
+  @include flex-rlb;
 }
 //-- row, center, top
 .flex-rct {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: flex-start;
-  text-align: center;
+  @include flex-rct;
 }
 //-- row, center, center
 .flex-rcc {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+  @include flex-rcc;
 }
 //-- row, center, bottom
 .flex-rcb {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: flex-end;
-  text-align: center;
+  @include flex-rcb;
 }
 //-- row, right, center
 .flex-rrc {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  align-items: center;
-  text-align: right;
+  @include flex-rrc;
 }
 //-- row, space-between, center
 .flex-rsbc {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+  @include flex-rsbc;
 }
 //-- row, space-between, bottom
 .flex-rsbb {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: flex-end;
+  @include flex-rsbb;
 }
 
 //-- column, center, left
 .flex-ccl {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
+  @include flex-ccl;
 }
 //-- column, center, center
 .flex-ccc {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  @include flex-ccc;
 }
 //-- column, center, right
 .flex-ccr {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-end;
+  @include flex-ccr;
 }
 //-- column, center, space-between
 .flex-ccsb {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: space-between;
+  @include flex-ccsb;
 }
 
 //-- flex number
@@ -143,6 +101,10 @@
   width: 100%;
 }
 .full-h {
+  height: 100%;
+}
+.full-wh {
+  width: 100%;
   height: 100%;
 }
 

@@ -1,4 +1,5 @@
 
+// margin & padding
 @mixin mx($size) {
   margin-left: $size;
   margin-right: $size;
@@ -7,4 +8,108 @@
 @mixin my($size) {
   margin-top: $size;
   margin-bottom: $size;
+}
+
+@mixin px($size) {
+  padding-left: $size;
+  padding-right: $size;
+}
+
+@mixin py($size) {
+  padding-top: $size;
+  padding-bottom: $size;
+}
+
+
+// flex
+//-- row, left, center
+@mixin flex-rlc() {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: left;
+}
+//-- row, center, bottom
+@mixin flex-rlb() {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: flex-end;
+  text-align: center;
+}
+//-- row, center, top
+@mixin flex-rct {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  text-align: center;
+}
+//-- row, center, center
+@mixin flex-rcc {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+//-- row, center, bottom
+@mixin flex-rcb {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-end;
+  text-align: center;
+}
+//-- row, right, center
+@mixin flex-rrc {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  text-align: right;
+}
+//-- row, space-between, center
+@mixin flex-rsbc {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+//-- row, space-between, bottom
+@mixin flex-rsbb {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+//-- column, center, left
+@mixin flex-ccl {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+//-- column, center, center
+@mixin flex-ccc {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+//-- column, center, right
+@mixin flex-ccr {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+}
+//-- column, center, space-between
+@mixin flex-ccsb {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: space-between;
 }
