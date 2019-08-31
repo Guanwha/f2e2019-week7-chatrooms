@@ -91,7 +91,7 @@ export default {
       this.loginChat(payload);
 
       // change page
-      this.$router.push({ name: 'ChatRoom' });
+      this.$router.push({ name: 'Test' });
     },
     ...mapActions(['loginChat']),
   },
