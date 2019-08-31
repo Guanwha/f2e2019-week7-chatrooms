@@ -12,8 +12,8 @@
 </template>
 
 <script>
-// /* global firebase */
-// const firebaseRef = firebase.database().ref('/posts/');
+/* global firebase */
+const firebaseRef = firebase.database().ref('/posts/');
 export default {
   name: 'HelloWorld',
   data() {
@@ -26,9 +26,9 @@ export default {
     // firebaseRef.once('value').then((snapshot) => {
     //   this.posts = snapshot.val();
     // });
-    // firebaseRef.on('value', (snapshot) => {
-    //   this.posts = snapshot.val();
-    // });
+    firebaseRef.on('value', (snapshot) => {
+      this.posts = snapshot.val();
+    });
   },
 };
 </script>
