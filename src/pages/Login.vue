@@ -32,7 +32,14 @@
             </div>
           </div>
           <!-- right/bottom-area: select animal -->
-          <div class="col-12 col-md-3 a1-animals"></div>
+          <div class="col-12 col-md-3 a1-animals">
+            <div class='a2-animal flex-ccc'
+                 :class="[{ 'a2-animal-active' : (selectIdx == key) }]"
+                 v-for='(animal, key) in curAnimals'
+                 :key='key'>
+              <img :src="animal.img">
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -62,6 +69,12 @@ export default {
         return this.images.cat[this.selectIdx].img;
       }
       return this.images.dog[this.selectIdx].img;
+    },
+    curAnimals() {
+      if (this.selectCat) {
+        return this.images.cat;
+      }
+      return this.images.dog;
     },
   },
 };
@@ -197,14 +210,14 @@ export default {
     @include py(3px);
     width: $f-size-2 * 5;
     font-size: $f-size-2;
-    color: $clr-white;
-    border-color: $clr-white;
+    color: $clr-gray;
+    border-color: $clr-gray;
     @media(min-width: $limit-w-pc) {
       width: $f-size-3 * 5;
       font-size: $f-size-3;
     }
     &:hover {
-      background: $clr-white * 0.5;
+      background: $clr-gray * 0.7;
     }
     &-active {
       color: $clr-selected;
@@ -217,9 +230,37 @@ export default {
 }
 .a1-animals {
   height: 20%;
-  background: lightgreen;
+  // background: lightgreen;
+  @include flex-rcc;
   @media(min-width: $limit-w-pc) {
     height: 100%;
+    @include flex-ccc;
+  }
+  .a2-animal {
+    width: 25%;
+    height: 100%;
+    border-radius: 9px;
+    border: 1px solid $clr-gray;
+    margin: 1%;
+    @media(min-width: $limit-w-pc) {
+      width: 100%;
+      height: 25%;
+      margin: 5%;
+    }
+    &:hover {
+      background: $clr-gray * 0.7;
+    }
+    &-active {
+      border-color: $clr-selected;
+      &:hover {
+        background: $clr-selected * 0.5;
+      }
+    }
+    img {
+      height: 80%;
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
   }
 }
 </style>
