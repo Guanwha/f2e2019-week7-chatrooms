@@ -45,6 +45,22 @@
 .flex-rrc {
   @include flex-rrc;
 }
+//-- row, space-around, top
+.flex-rsat {
+  @include flex-rsat;
+}
+//-- row, space-around, center
+.flex-rsac {
+  @include flex-rsac;
+}
+//-- row, space-around, bottom
+.flex-rsab {
+  @include flex-rsab;
+}
+//-- row, space-between, top
+.flex-rsbt {
+  @include flex-rsbt;
+}
 //-- row, space-between, center
 .flex-rsbc {
   @include flex-rsbc;
@@ -69,6 +85,30 @@
 //-- column, center, space-between
 .flex-ccsb {
   @include flex-ccsb;
+}
+//-- column, space-around, left
+.flex-csal {
+  @include flex-csal;
+}
+//-- column, space-around, center
+.flex-csac {
+  @include flex-csac;
+}
+//-- column, space-around, right
+.flex-csar {
+  @include flex-csar;
+}
+//-- column, space-between, left
+.flex-csbl {
+  @include flex-csbl;
+}
+//-- column, space-between, center
+.flex-csbc {
+  @include flex-csbc;
+}
+//-- column, space-between, right
+.flex-csbr {
+  @include flex-csbr;
 }
 
 //-- flex number

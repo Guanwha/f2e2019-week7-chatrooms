@@ -70,6 +70,34 @@
   align-items: center;
   text-align: right;
 }
+//-- row, space-around, top
+@mixin flex-rsat {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+//-- row, space-around, center
+@mixin flex-rsac {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+//-- row, space-around, bottom
+@mixin flex-rsab {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: flex-end;
+}
+//-- row, space-between, top
+@mixin flex-rsbt {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+}
 //-- row, space-between, center
 @mixin flex-rsbc {
   display: flex;
@@ -112,4 +140,46 @@
   flex-direction: column;
   justify-content: center;
   align-items: space-between;
+}
+//-- column, space-around, left
+@mixin flex-csal {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: left;
+}
+//-- column, space-around, center
+@mixin flex-csac {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+//-- column, space-around, right
+@mixin flex-csar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: right;
+}
+//-- column, space-between, left
+@mixin flex-csbl {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: left;
+}
+//-- column, space-between, center
+@mixin flex-csbc {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+//-- column, space-between, right
+@mixin flex-csbr {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: right;
 }
