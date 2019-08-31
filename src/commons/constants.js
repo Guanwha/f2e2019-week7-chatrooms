@@ -1,5 +1,5 @@
 
-const imagePath = '/static/imgs/';
+const imagePath = './static/imgs/';
 export const animalImages = {
   cat: {
     0: {
