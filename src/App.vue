@@ -20,5 +20,9 @@ export default {
 
   width: 100%;
   height: 100%;
+
+  /* assume the minimal device is iPhone 5 */
+  min-width: 320px;
+  min-height: 568px;
 }
 </style>
