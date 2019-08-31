@@ -17,6 +17,12 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+
+  width: 100%;
+  height: 100%;
+
+  /* assume the minimal device is iPhone 5 */
+  min-width: 320px;
+  min-height: 568px;
 }
 </style>
