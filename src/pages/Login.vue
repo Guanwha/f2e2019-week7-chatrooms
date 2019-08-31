@@ -28,7 +28,7 @@
                 </div>
                 <input class="form-control" type="text" placeholder="請輸入你想要的暱稱" v-model='name'>
                 <!-- send button -->
-                <button class="btn btn-enter" @click="gotoChatRoom">進入聊天</button>
+                <button class="btn btn-enter" @click="gotoChatRoom" :disabled='name.length === 0'>進入聊天</button>
               </div>
             </div>
           </div>
@@ -49,6 +49,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 import { animalImages } from '../commons/constants';
 
 export default {
@@ -81,9 +82,18 @@ export default {
       }
     },
     gotoChatRoom() {
-      // [TODO] send the login to vuex
+      // send the login to vuex
+      const payload = {
+        isCat: this.isCat,
+        selectIdx: this.selectIdx,
+        name: this.name,
+      };
+      this.loginChat(payload);
+
+      // change page
       this.$router.push({ name: 'ChatRoom' });
     },
+    ...mapActions(['loginChat']),
   },
   computed: {
     curAnimalImage() {
@@ -223,6 +233,9 @@ export default {
         background-color: $clr-white;
         &:hover {
           background: $clr-white * 0.8;
+        }
+        &:disabled {
+          background: $clr-white;
         }
       }
     }
