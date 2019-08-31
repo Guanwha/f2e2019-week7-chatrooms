@@ -17,8 +17,8 @@
             <div class="row a2-you">
               <!-- select animal type -->
               <div class="col-12 col-md-3 align-self-center a3-which">
-                <button :class="['btn', 'btn-animal', { 'btn-animal-active' : !selectCat }]">狗狗</button>
-                <button :class="['btn', 'btn-animal', { 'btn-animal-active' :  selectCat }]">貓貓</button>
+                <button :class="['btn', 'btn-animal', { 'btn-animal-active' : !isCat }]" @click='selectDog'>狗狗</button>
+                <button :class="['btn', 'btn-animal', { 'btn-animal-active' :  isCat }]" @click='selectCat'>貓貓</button>
               </div>
               <!-- naming -->
               <div class="col-12 col-md-9 a3-name flex-ccc">
@@ -26,7 +26,8 @@
                   <div class="shadow"/>
                   <img :src="curAnimalImage">
                 </div>
-                <input class="form-control" type="text" placeholder="請輸入你想要的暱稱">
+                <input class="form-control" type="text" placeholder="請輸入你想要的暱稱" v-model='name'>
+                <!-- send button -->
                 <button class="btn btn-enter" @click="gotoChatRoom">進入聊天</button>
               </div>
             </div>
@@ -36,7 +37,8 @@
             <div class='a2-animal flex-ccc'
                  :class="[{ 'a2-animal-active' : (selectIdx == key) }]"
                  v-for='(animal, key) in curAnimals'
-                 :key='key'>
+                 :key='key'
+                 @click='selectSkin(key)'>
               <img :src="animal.img">
             </div>
           </div>
@@ -53,25 +55,45 @@ export default {
   name: 'Login',
   data() {
     return {
-      selectCat: true,
+      isCat: true,
       selectIdx: 0,
       images: animalImages,
+      maxDog: Object.keys(animalImages.dog).length,
+      maxCat: Object.keys(animalImages.cat).length,
+      name: '',
     };
   },
   methods: {
+    selectDog() {
+      this.isCat = false;
+    },
+    selectCat() {
+      this.isCat = true;
+    },
+    selectSkin(idx) {
+      if (this.isCat) {
+        this.selectIdx = (idx < 0) ? 0 : idx;
+        this.selectIdx = ((this.selectIdx >= this.maxCat) ? this.maxDog - 1 : this.selectIdx);
+      }
+      else {
+        this.selectIdx = (idx < 0) ? 0 : idx;
+        this.selectIdx = ((this.selectIdx >= this.maxDog) ? this.maxDog - 1 : this.selectIdx);
+      }
+    },
     gotoChatRoom() {
+      // [TODO] send the login to vuex
       this.$router.push({ name: 'ChatRoom' });
     },
   },
   computed: {
     curAnimalImage() {
-      if (this.selectCat) {
+      if (this.isCat) {
         return this.images.cat[this.selectIdx].img;
       }
       return this.images.dog[this.selectIdx].img;
     },
     curAnimals() {
-      if (this.selectCat) {
+      if (this.isCat) {
         return this.images.cat;
       }
       return this.images.dog;
