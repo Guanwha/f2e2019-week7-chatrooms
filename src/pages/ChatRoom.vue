@@ -16,6 +16,66 @@
                        :pName='"小黃"'
                        :pMessage='"這也是一條很長很長很長很長訊息"'
                        :pDateTime='new Date().getTime()'/>
+        <BubbleMessage :pIsLeft='true'
+                       :pIsCat='true'
+                       :pAnimalIdx='1'
+                       :pName='"小明"'
+                       :pMessage='"這是一條很長很長很長很長訊息2"'
+                       :pDateTime='new Date().getTime()'/>
+        <BubbleMessage :pIsLeft='true'
+                       :pIsCat='true'
+                       :pAnimalIdx='1'
+                       :pName='"小明"'
+                       :pMessage='"這是一條很長很長很長很長訊息3"'
+                       :pDateTime='new Date().getTime()'/>
+        <BubbleMessage :pIsLeft='true'
+                       :pIsCat='true'
+                       :pAnimalIdx='1'
+                       :pName='"小明"'
+                       :pMessage='"這是一條很長很長很長很長訊息4"'
+                       :pDateTime='new Date().getTime()'/>
+        <BubbleMessage :pIsLeft='true'
+                       :pIsCat='true'
+                       :pAnimalIdx='1'
+                       :pName='"小明"'
+                       :pMessage='"這是一條很長很長很長很長訊息5"'
+                       :pDateTime='new Date().getTime()'/>
+        <BubbleMessage :pIsLeft='true'
+                       :pIsCat='true'
+                       :pAnimalIdx='1'
+                       :pName='"小明"'
+                       :pMessage='"這是一條很長很長很長很長訊息6"'
+                       :pDateTime='new Date().getTime()'/>
+        <BubbleMessage :pIsLeft='true'
+                       :pIsCat='true'
+                       :pAnimalIdx='1'
+                       :pName='"小明"'
+                       :pMessage='"這是一條很長很長很長很長訊息7"'
+                       :pDateTime='new Date().getTime()'/>
+        <BubbleMessage :pIsLeft='true'
+                       :pIsCat='true'
+                       :pAnimalIdx='1'
+                       :pName='"小明"'
+                       :pMessage='"這是一條很長很長很長很長訊息8"'
+                       :pDateTime='new Date().getTime()'/>
+        <BubbleMessage :pIsLeft='true'
+                       :pIsCat='true'
+                       :pAnimalIdx='1'
+                       :pName='"小明"'
+                       :pMessage='"這是一條很長很長很長很長訊息9"'
+                       :pDateTime='new Date().getTime()'/>
+        <BubbleMessage :pIsLeft='true'
+                       :pIsCat='true'
+                       :pAnimalIdx='1'
+                       :pName='"小明"'
+                       :pMessage='"這是一條很長很長很長很長訊息10"'
+                       :pDateTime='new Date().getTime()'/>
+        <BubbleMessage :pIsLeft='true'
+                       :pIsCat='true'
+                       :pAnimalIdx='1'
+                       :pName='"小明"'
+                       :pMessage='"這是一條很長很長很長很長訊息11"'
+                       :pDateTime='new Date().getTime()'/>
       </div>
       <!-- send box -->
       <div class="sendbox mt-auto flex-rcc">
@@ -67,6 +127,7 @@ export default {
   padding: 1rem * 0.5;
   .a1-messages {
     width: 100%;
+    overflow-y: auto;
   }
   .sendbox {
     width: 95%;
@@ -103,6 +164,29 @@ export default {
   }
   &:disabled {
     background-color: transparent;
+  }
+}
+
+// Customize scroll bar
+/* width */
+::-webkit-scrollbar {
+  width: 14px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 7px $clr-main-lv1;
+  border-radius: 7px;
+  &:hover {
+    box-shadow: inset 0 0 7px $clr-gray;
+  }
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: $clr-main-lv1;
+  border-radius: 7px;
+  border-width: 0;
+  &:hover {
+    background: $clr-main-lv1 * 0.5;
   }
 }
 </style>
