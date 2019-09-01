@@ -7,7 +7,7 @@ export const mutations = {
     // console.log('LOGIN_CHAT');
     state.isCat = payload.isCat;
     state.animalIdx = payload.selectIdx;
-    state.name = payload.name;
+    state.name = `${new Date().getTime()}-${payload.name}`;
   },
   // payload is error object (include action, errMessage)
   [types.UPDATE_ERR](state, payload) {
