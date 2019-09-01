@@ -1,5 +1,5 @@
 <template>
-  <div class="wrap flex-ccc">
+  <div class="full-wh flex-ccc">
     <div class="header flex-rlc">ChatRoom</div>
     <div class="content"></div>
   </div>
@@ -14,10 +14,6 @@ export default {
 <style lang="scss" scoped>
 @import '../styles/variables';
 
-.wrap {
-  width: 100%;
-  height: 100%;
-}
 .header {
   width: 100%;
   height: 70px;
@@ -29,7 +25,10 @@ export default {
 }
 .content {
   width: 100%;
-  height: 100%;
+  height: calc(100% - 70px);
   background: $clr-main-lv2;
+  @media(min-width: $limit-w-pc) {
+    padding-bottom: 70px;
+  }
 }
 </style>
