@@ -113,6 +113,27 @@
   align-items: flex-end;
 }
 
+//-- column, top, left
+@mixin flex-ctl {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+//-- column, top, center
+@mixin flex-ctc {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+//-- column, top, right
+@mixin flex-ctr {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
 //-- column, center, left
 @mixin flex-ccl {
   display: flex;

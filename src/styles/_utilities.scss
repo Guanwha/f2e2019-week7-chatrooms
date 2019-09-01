@@ -70,6 +70,18 @@
   @include flex-rsbb;
 }
 
+//-- column, top, left
+.flex-ctl {
+  @include flex-ctl;
+}
+//-- column, top, center
+.flex-ctc {
+  @include flex-ctc;
+}
+//-- column, top, right
+.flex-ctr {
+  @include flex-ctr;
+}
 //-- column, center, left
 .flex-ccl {
   @include flex-ccl;

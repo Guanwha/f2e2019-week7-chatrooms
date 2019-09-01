@@ -3,7 +3,18 @@
     <div class="header flex-rlc">ChatRoom</div>
     <div class="content flex-csbc">
       <!-- message area -->
-      <div class="a1-messages">
+      <div class="a1-messages flex-ctl">
+        <BubbleMessage :pIsLeft='true'
+                       :pIsCat='true'
+                       :pAnimalIdx='1'
+                       :pName='"小明"'
+                       :pMessage='"這是一條很長很長很長很長訊息"'
+                       :pDateTime='new Date().getTime()'/>
+        <BubbleMessage :pIsLeft='true'
+                       :pIsCat='false'
+                       :pAnimalIdx='2'
+                       :pName='"小黃"'
+                       :pMessage='"這也是一條很長很長很長很長訊息"'/>
       </div>
       <!-- send box -->
       <div class="sendbox mt-auto flex-rcc">
@@ -19,8 +30,13 @@
 </template>
 
 <script>
+import BubbleMessage from '../components/BubbleMessage';
+
 export default {
   name: 'ChatRoom',
+  components: {
+    BubbleMessage,
+  },
   data() {
     return {
       messages: {},
@@ -48,6 +64,9 @@ export default {
   height: calc(100% - 70px);
   background: $clr-main-lv2;
   padding: 1rem * 0.5;
+  .a1-messages {
+    width: 100%;
+  }
   .sendbox {
     width: 95%;
     margin: 1rem * 0.5;
