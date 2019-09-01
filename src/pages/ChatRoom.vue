@@ -10,11 +10,12 @@
                        :pName='"小明"'
                        :pMessage='"這是一條很長很長很長很長訊息"'
                        :pDateTime='new Date().getTime()'/>
-        <BubbleMessage :pIsLeft='true'
+        <BubbleMessage :pIsLeft='false'
                        :pIsCat='false'
                        :pAnimalIdx='2'
                        :pName='"小黃"'
-                       :pMessage='"這也是一條很長很長很長很長訊息"'/>
+                       :pMessage='"這也是一條很長很長很長很長訊息"'
+                       :pDateTime='new Date().getTime()'/>
       </div>
       <!-- send box -->
       <div class="sendbox mt-auto flex-rcc">

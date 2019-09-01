@@ -41,9 +41,17 @@
 .flex-rcb {
   @include flex-rcb;
 }
+//-- row, right, top
+.flex-rrt {
+  @include flex-rrt;
+}
 //-- row, right, center
 .flex-rrc {
   @include flex-rrc;
+}
+//-- row, right, bottom
+.flex-rrb {
+  @include flex-rrb;
 }
 //-- row, space-around, top
 .flex-rsat {

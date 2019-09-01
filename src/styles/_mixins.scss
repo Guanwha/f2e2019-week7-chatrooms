@@ -62,12 +62,28 @@
   align-items: flex-end;
   text-align: center;
 }
+//-- row, right, top
+@mixin flex-rrt {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: flex-start;
+  text-align: right;
+}
 //-- row, right, center
 @mixin flex-rrc {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
+  text-align: right;
+}
+//-- row, right, bottom
+@mixin flex-rrb {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: flex-end;
   text-align: right;
 }
 //-- row, space-around, top
