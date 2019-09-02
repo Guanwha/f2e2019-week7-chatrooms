@@ -10,6 +10,12 @@ export const mutations = {
     state.loginTime = `${new Date().getTime()}`;
     state.name = `${payload.name}`;
   },
+  [types.LOGOUT_CHAT](state) {
+    state.isCat = true;
+    state.animalIdx = 0;
+    state.loginTime = 0;
+    state.name = '';
+  },
   // payload is error object (include action, errMessage)
   [types.UPDATE_ERR](state, payload) {
     if (payload) {

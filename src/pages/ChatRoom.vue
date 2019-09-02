@@ -1,6 +1,11 @@
 <template>
   <div class="full-wh flex-ccc">
-    <div class="header flex-rlc">ChatRoom</div>
+    <div class="header flex-rlc">
+      <div>ChatRoom</div>
+      <div class="user-image ml-auto" :style="{ 'background-image': 'url(' + curAnimalHeadImage + ')' }"></div>
+      <div class="user-name">{{nickname}}</div>
+      <button class="logout" @click='logout()'><img src="../assets/icon_logout.svg"></button>
+    </div>
     <div class="content flex-csbc">
       <!-- message area -->
       <div class="a1-messages flex-ctl">
@@ -22,7 +27,7 @@
         <button class="img-btn" data-toggle="tooltip" data-placement="top" title="Coming Soon..."><img src="../assets/icon_attachment.svg"></button>
         <div class='line'></div>
         <input class="form-control" type="text" v-model='message' @keyup.shift.exact.enter="send()" placeholder='Shift + Enter will send out the message.'>
-        <button class="img-btn" @click="send()"><img src="../assets/icon_send.svg"></button>
+        <button class="img-btn flex-ccc" @click="send()"><img src="../assets/icon_send.svg"></button>
       </div>
     </div>
   </div>
@@ -31,7 +36,8 @@
 <script>
 /* global $ */
 /* global firebase */
-import { mapGetters } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
+import { animalImages } from '../commons/constants';
 import BubbleMessage from '../components/BubbleMessage';
 
 export default {
@@ -44,6 +50,7 @@ export default {
       firebaseRef: null,
       messages: {},
       message: '',
+      images: animalImages,
     };
   },
   mounted() {
@@ -97,8 +104,19 @@ export default {
         this.message = '';
       }
     },
+    logout() {
+      this.logoutChat();
+      this.$router.back();
+    },
+    ...mapActions(['logoutChat']),
   },
   computed: {
+    curAnimalHeadImage() {
+      if (this.isCat) {
+        return this.images.cat[this.animalIdx].head;
+      }
+      return this.images.dog[this.animalIdx].head;
+    },
     ...mapGetters(['isCat', 'animalIdx', 'loginTime', 'nickname']),
   },
 };
@@ -116,6 +134,43 @@ export default {
   font-size: $f-size-4;
   font-weight: bold;
   padding-left: 35px;
+  padding-right: 0.5rem;
+  .user-image {
+    width: 3rem;
+    height: 3rem;
+    margin: 0.5rem;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  .user-name {
+    margin: 0.5rem;
+  }
+  .logout {
+    width: 3rem;
+    height: 3rem;
+    border-width: 0;
+    border-radius: .25rem;
+    background-color: transparent;
+    transition: background-color .15s ease-in-out;
+    &:hover {
+      background-color: $clr-img-btn-hover;
+    }
+    &:disabled {
+      background-color: transparent;
+    }
+    // width: 2rem;
+    // height: 2rem;
+    // margin: 0.5rem;
+    // padding: 0.5rem;
+    // background-image: url('../assets/icon_logout.svg');
+    // background-size: contain;
+    // background-repeat: no-repeat;
+    // background-position: center;
+    // &:hover {
+    //   background-color: $clr-img-btn-hover;
+    // }
+  }
 }
 .content {
   width: 100%;
@@ -157,7 +212,7 @@ export default {
   background-color: transparent;
   transition: background-color .15s ease-in-out;
   &:hover {
-    background-color: #FFFFFF33;
+    background-color: $clr-img-btn-hover;
   }
   &:disabled {
     background-color: transparent;
