@@ -16,7 +16,7 @@ export const animalImages = {
     },
     3: {
       img: `${imagePath}Cat_4.png`,
-      head: '',
+      head: `${imagePath}Head_Default.svg`,
     },
   },
   dog: {
@@ -26,7 +26,7 @@ export const animalImages = {
     },
     1: {
       img: `${imagePath}Dog_2.png`,
-      head: '',
+      head: `${imagePath}Head_Default.svg`,
     },
     2: {
       img: `${imagePath}Dog_3.png`,
@@ -34,7 +34,7 @@ export const animalImages = {
     },
     3: {
       img: `${imagePath}Dog_4.png`,
-      head: '',
+      head: `${imagePath}Head_Default.svg`,
     },
   },
 };
