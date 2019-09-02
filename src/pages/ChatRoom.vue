@@ -78,9 +78,10 @@ export default {
     this.firebaseRef.on('value', (snapshot) => {
       console.log('chatroom lobby updated');
       this.messages = snapshot.val();
-      if (this.needUpdateScroll) {
-        this.scrollSmoothToBottom();
-      }
+      // if (this.needUpdateScroll) {
+      //   this.scrollSmoothToBottom();
+      // }
+      this.scrollSmoothToBottom();
     });
   },
   methods: {
@@ -112,9 +113,11 @@ export default {
       }
     },
     scrollSmoothToBottom() {
-      const el = document.querySelector('.a1-messages');
-      el.scrollTop = el.scrollHeight;
-      this.needUpdateScroll = false;
+      setTimeout(() => {
+        const el = document.querySelector('.a1-messages');
+        el.scrollTop = el.scrollHeight;
+        this.needUpdateScroll = false;
+      }, 100);
     },
     logout() {
       this.logoutChat();
