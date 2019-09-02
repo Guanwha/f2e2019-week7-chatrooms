@@ -4,78 +4,16 @@
     <div class="content flex-csbc">
       <!-- message area -->
       <div class="a1-messages flex-ctl">
-        <BubbleMessage :pIsLeft='true'
-                       :pIsCat='true'
-                       :pAnimalIdx='1'
-                       :pName='"小明"'
-                       :pMessage='"這是一條很長很長很長很長訊息"'
-                       :pDateTime='new Date().getTime()'/>
-        <BubbleMessage :pIsLeft='false'
-                       :pIsCat='false'
-                       :pAnimalIdx='2'
-                       :pName='"小黃"'
-                       :pMessage='"這也是一條很長很長很長很長訊息"'
-                       :pDateTime='new Date().getTime()'/>
-        <BubbleMessage :pIsLeft='true'
-                       :pIsCat='true'
-                       :pAnimalIdx='1'
-                       :pName='"小明"'
-                       :pMessage='"這是一條很長很長很長很長訊息2"'
-                       :pDateTime='new Date().getTime()'/>
-        <BubbleMessage :pIsLeft='true'
-                       :pIsCat='true'
-                       :pAnimalIdx='1'
-                       :pName='"小明"'
-                       :pMessage='"這是一條很長很長很長很長訊息3"'
-                       :pDateTime='new Date().getTime()'/>
-        <BubbleMessage :pIsLeft='true'
-                       :pIsCat='true'
-                       :pAnimalIdx='1'
-                       :pName='"小明"'
-                       :pMessage='"這是一條很長很長很長很長訊息4"'
-                       :pDateTime='new Date().getTime()'/>
-        <BubbleMessage :pIsLeft='true'
-                       :pIsCat='true'
-                       :pAnimalIdx='1'
-                       :pName='"小明"'
-                       :pMessage='"這是一條很長很長很長很長訊息5"'
-                       :pDateTime='new Date().getTime()'/>
-        <BubbleMessage :pIsLeft='true'
-                       :pIsCat='true'
-                       :pAnimalIdx='1'
-                       :pName='"小明"'
-                       :pMessage='"這是一條很長很長很長很長訊息6"'
-                       :pDateTime='new Date().getTime()'/>
-        <BubbleMessage :pIsLeft='true'
-                       :pIsCat='true'
-                       :pAnimalIdx='1'
-                       :pName='"小明"'
-                       :pMessage='"這是一條很長很長很長很長訊息7"'
-                       :pDateTime='new Date().getTime()'/>
-        <BubbleMessage :pIsLeft='true'
-                       :pIsCat='true'
-                       :pAnimalIdx='1'
-                       :pName='"小明"'
-                       :pMessage='"這是一條很長很長很長很長訊息8"'
-                       :pDateTime='new Date().getTime()'/>
-        <BubbleMessage :pIsLeft='true'
-                       :pIsCat='true'
-                       :pAnimalIdx='1'
-                       :pName='"小明"'
-                       :pMessage='"這是一條很長很長很長很長訊息9"'
-                       :pDateTime='new Date().getTime()'/>
-        <BubbleMessage :pIsLeft='true'
-                       :pIsCat='true'
-                       :pAnimalIdx='1'
-                       :pName='"小明"'
-                       :pMessage='"這是一條很長很長很長很長訊息10"'
-                       :pDateTime='new Date().getTime()'/>
-        <BubbleMessage :pIsLeft='true'
-                       :pIsCat='true'
-                       :pAnimalIdx='1'
-                       :pName='"小明"'
-                       :pMessage='"這是一條很長很長很長很長訊息11"'
-                       :pDateTime='new Date().getTime()'/>
+        <div v-for='(message, key) in messages'
+             :key='key'
+             class='full-w'>
+          <BubbleMessage :pIsLeft='isOtherUserMessage(message)'
+                         :pIsCat='message.isCat'
+                         :pAnimalIdx='message.animalIdx'
+                         :pName='message.nickname'
+                         :pMessage='message.msg'
+                         :pDateTime='message.time'/>
+        </div>
       </div>
       <!-- send box -->
       <div class="sendbox mt-auto flex-rcc">
@@ -102,12 +40,42 @@ export default {
   },
   data() {
     return {
-      firebaseRef: firebase.database().ref('/chatrooms/lobby'),
+      firebaseRef: null,
       messages: {},
       message: '',
     };
   },
+  mounted() {
+    // check login
+    if (this.loginTime === 0) {
+      this.$router.push({ name: 'Login' });
+      return;
+    }
+    // receive firebase data
+    const connectedRef = firebase.database().ref('.info/connected');
+    connectedRef.on('value', (snap) => {
+      if (snap.val()) {
+        console.log('firebase connected');
+      }
+      else {
+        console.log('firebase not connected');
+      }
+    });
+
+    this.firebaseRef = firebase.database().ref('/chatrooms/lobby');
+    this.firebaseRef.on('value', (snapshot) => {
+      console.log('chatroom lobby updated');
+      this.messages = snapshot.val();
+    });
+  },
   methods: {
+    isOtherUserMessage(message) {
+      if (message.loginTime !== this.loginTime ||
+          message.nickname !== this.nickname) {
+        return true;
+      }
+      return false;
+    },
     send() {
       if (this.message) {
         // push the message to the firebase
