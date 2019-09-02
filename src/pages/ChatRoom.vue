@@ -17,9 +17,9 @@
       </div>
       <!-- send box -->
       <div class="sendbox mt-auto flex-rcc">
-        <button class="img-btn"><img src="../assets/icon_emotion.svg"></button>
-        <button class="img-btn"><img src="../assets/icon_picture.svg"></button>
-        <button class="img-btn"><img src="../assets/icon_attachment.svg"></button>
+        <button class="img-btn" data-toggle="tooltip" data-placement="top" title="Coming Soon..."><img src="../assets/icon_emotion.svg"></button>
+        <button class="img-btn" data-toggle="tooltip" data-placement="top" title="Coming Soon..."><img src="../assets/icon_picture.svg"></button>
+        <button class="img-btn" data-toggle="tooltip" data-placement="top" title="Coming Soon..."><img src="../assets/icon_attachment.svg"></button>
         <div class='line'></div>
         <input class="form-control" type="text" v-model='message' @keyup.shift.exact.enter="send()" placeholder='Shift + Enter will send out the message.'>
         <button class="img-btn" @click="send()"><img src="../assets/icon_send.svg"></button>
@@ -29,6 +29,7 @@
 </template>
 
 <script>
+/* global $ */
 /* global firebase */
 import { mapGetters } from 'vuex';
 import BubbleMessage from '../components/BubbleMessage';
@@ -46,6 +47,9 @@ export default {
     };
   },
   mounted() {
+    // initialize bootstrap tooltip
+    $('[data-toggle="tooltip"]').tooltip();
+
     // check login
     if (this.loginTime === 0) {
       this.$router.push({ name: 'Login' });
