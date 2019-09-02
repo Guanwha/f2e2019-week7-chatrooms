@@ -51,6 +51,7 @@ export default {
       messages: {},
       message: '',
       images: animalImages,
+      needUpdateScroll: false,
     };
   },
   mounted() {
@@ -77,6 +78,9 @@ export default {
     this.firebaseRef.on('value', (snapshot) => {
       console.log('chatroom lobby updated');
       this.messages = snapshot.val();
+      if (this.needUpdateScroll) {
+        this.scrollSmoothToBottom();
+      }
     });
   },
   methods: {
@@ -89,6 +93,9 @@ export default {
     },
     send() {
       if (this.message) {
+        // scroll to the bottom (must be put here before firebase.push())
+        this.needUpdateScroll = true;
+
         // push the message to the firebase
         this.firebaseRef.push({
           type: 0,
@@ -103,6 +110,11 @@ export default {
         // clear the message of UI
         this.message = '';
       }
+    },
+    scrollSmoothToBottom() {
+      const el = document.querySelector('.a1-messages');
+      el.scrollTop = el.scrollHeight;
+      this.needUpdateScroll = false;
     },
     logout() {
       this.logoutChat();
@@ -159,17 +171,6 @@ export default {
     &:disabled {
       background-color: transparent;
     }
-    // width: 2rem;
-    // height: 2rem;
-    // margin: 0.5rem;
-    // padding: 0.5rem;
-    // background-image: url('../assets/icon_logout.svg');
-    // background-size: contain;
-    // background-repeat: no-repeat;
-    // background-position: center;
-    // &:hover {
-    //   background-color: $clr-img-btn-hover;
-    // }
   }
 }
 .content {
