@@ -7,7 +7,14 @@ export const mutations = {
     // console.log('LOGIN_CHAT');
     state.isCat = payload.isCat;
     state.animalIdx = payload.selectIdx;
-    state.name = payload.name;
+    state.loginTime = `${new Date().getTime()}`;
+    state.name = `${payload.name}`;
+  },
+  [types.LOGOUT_CHAT](state) {
+    state.isCat = true;
+    state.animalIdx = 0;
+    state.loginTime = 0;
+    state.name = '';
   },
   // payload is error object (include action, errMessage)
   [types.UPDATE_ERR](state, payload) {
@@ -21,6 +28,7 @@ export const mutations = {
 export const state = {
   isCat: true,
   animalIdx: 0,
+  loginTime: 0,               // milliseconds since January 1, 1970
   name: '',
   lastErrorMessage: null,     // include action, errMessage
   isLoading: false,

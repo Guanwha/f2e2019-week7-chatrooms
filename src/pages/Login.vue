@@ -35,10 +35,10 @@
           <!-- right/bottom-area: select animal -->
           <div class="col-12 col-md-3 a1-animals">
             <div class='a2-animal flex-ccc'
-                 :class="[{ 'a2-animal-active' : (selectIdx == key) }]"
+                 :class="[{ 'a2-animal-active' : (selectIdx === parseInt(key)) }]"
                  v-for='(animal, key) in curAnimals'
                  :key='key'
-                 @click='selectSkin(key)'>
+                 @click='selectSkin(parseInt(key))'>
               <img :src="animal.img">
             </div>
           </div>
